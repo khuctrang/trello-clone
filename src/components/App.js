@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TrelloList from "./TrelloList";
 import TrelloActionButton from "./TrelloActionButton";
-import { DragDropContext } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 import { connect } from "react-redux";
 import { sort } from "../actions";
@@ -11,7 +11,7 @@ import { Container } from "./AppStyle";
 class App extends Component {
   onDragEnd = result => {
     // TODO: reordering logic
-    const { destination, source, draggableId } = result;
+    const { destination, source, draggableId, type } = result;
 
     if (!destination) return; // Drag out of outer components
 
@@ -21,7 +21,8 @@ class App extends Component {
         destination.droppableId,
         source.index,
         destination.index,
-        draggableId
+        draggableId,
+        type
       )
     );
   };
@@ -33,17 +34,23 @@ class App extends Component {
         <div>
           <h2>Hello Hanoi</h2>
           {/* <TrelloList title={"test"} /> */}
-          <Container>
-            {lists.map(list => (
-              <TrelloList
-                listId={list.id}
-                key={list.id}
-                title={list.title}
-                cards={list.cards}
-              />
-            ))}
-            <TrelloActionButton list />
-          </Container>
+          <Droppable droppableId={"boardId"} direction="horizontal" type="list">
+            {provider => (
+              <Container {...provider.droppableProps} ref={provider.innerRef}>
+                {lists.map((list, index) => (
+                  <TrelloList
+                    listId={list.id}
+                    key={list.id}
+                    title={list.title}
+                    cards={list.cards}
+                    index={index}
+                  />
+                ))}
+                <TrelloActionButton list />
+                {provider.placeholder}
+              </Container>
+            )}
+          </Droppable>
         </div>
       </DragDropContext>
     );

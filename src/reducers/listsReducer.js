@@ -1,9 +1,9 @@
 import { actionTypes } from "../actions";
 
 const initialState = {
-  0: {
+  "list-0": {
     title: "Last Episode",
-    id: 0,
+    id: "list-0",
     cards: [
       {
         id: 0,
@@ -15,9 +15,9 @@ const initialState = {
       }
     ]
   },
-  1: {
+  "list-1": {
     title: "Another Episode",
-    id: 1,
+    id: "list-1",
     cards: [
       {
         id: 2,
@@ -38,40 +38,52 @@ let listId = 1;
 let cardId = 5;
 
 const listsReducer = (state = initialState, { type, payload }) => {
+  /* console.log("type");
+  console.log(type); */
   switch (type) {
     case actionTypes.ADD_LIST:
-      const newList = title => {
-        ++listId;
-        return { title, cards: [], id: listId };
-      };
-      return { ...state, ...newList(payload) };
+      /* console.log("state");
+      console.log(state); */
 
-    case actionTypes.ADD_CARD:
+      ++listId;
+      const newList = title => {
+        return { title, cards: [], id: `list-${listId}` };
+      };
+      return { ...state, [`list-${listId}`]: newList(payload) };
+
+    case actionTypes.ADD_CARD: {
+      /*       console.log("state");
+      console.log(state); */
+      const { text, listId } = payload;
       const newCard = {
         id: cardId,
-        text: payload.text
+        text: text
       };
       ++cardId;
-      const newState = state.map(list => {
-        if (list.id === payload.listId) {
-          return {
-            ...list,
-            cards: [...list.cards, newCard]
-          };
-        }
-        return list;
-      });
-      return newState;
+      const list = state[listId];
+      list.cards.push(newCard);
+
+      return { ...state, [listId]: list };
+    }
 
     case actionTypes.DRAG_HAPPENED:
+      /* console.log("state");
+      console.log(state); */
       const {
         droppableIdStart,
         droppableIdEnd,
         droppableIndexEnd,
         droppableIndexStart,
-        draggableId
+        type
       } = payload;
+      console.log(type);
 
+      // dragging lists
+      if (type === "list") {
+        return state;
+      }
+
+      // dragging cards
       // in the same list
       if (droppableIdStart === droppableIdEnd) {
         const list = state[droppableIdStart];

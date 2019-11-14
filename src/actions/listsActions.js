@@ -23,7 +23,8 @@ export const sort = (
         droppableIdEnd,
         droppableIndexEnd,
         droppableIndexStart,
-        draggableId
+        draggableId,
+        type
       }
     });
   };
