@@ -24,6 +24,7 @@ const TrelloList = ({ title, cards, listId, index }) => {
                     text={card.text}
                     id={card.id}
                     index={index}
+                    listId={listId}
                   />
                 ))}
 

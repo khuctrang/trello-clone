@@ -6,7 +6,7 @@ export const CardContainer = styled.div`
   position: relative;
 `;
 
-const EditButton = styled(Icon)`
+export const EditButton = styled(Icon)`
   position: absolute;
   display: none;
   right: 5px;

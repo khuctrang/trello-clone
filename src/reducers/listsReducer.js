@@ -38,9 +38,11 @@ let listId = 1;
 let cardId = 5;
 
 const listsReducer = (state = initialState, { type, payload }) => {
-  /* console.log("type");
-  console.log(type); */
+  console.log("type");
+  console.log(type);
+
   switch (type) {
+    /* ADD_LIST */
     case actionTypes.ADD_LIST:
       /* console.log("state");
       console.log(state); */
@@ -51,6 +53,7 @@ const listsReducer = (state = initialState, { type, payload }) => {
       };
       return { ...state, [`list-${listId}`]: newList(payload) };
 
+    /* ADD_CARD */
     case actionTypes.ADD_CARD: {
       /*       console.log("state");
       console.log(state); */
@@ -66,6 +69,7 @@ const listsReducer = (state = initialState, { type, payload }) => {
       return { ...state, [listId]: list };
     }
 
+    /* DRAG_HAPPENED */
     case actionTypes.DRAG_HAPPENED:
       /* console.log("state");
       console.log(state); */
@@ -110,6 +114,27 @@ const listsReducer = (state = initialState, { type, payload }) => {
         };
       }
       return state;
+
+    /* EDIT_CARD */
+    case actionTypes.EDIT_CARD: {
+      const { id, listId, newText } = payload;
+      console.log("id");
+      console.log(id);
+      console.log("listId");
+      console.log(listId);
+      console.log("newText");
+      console.log(newText);
+      const list = state[listId];
+      const newCards = list.cards.map(card => {
+        if (card.id === id) {
+          card.text = newText;
+          return card;
+        }
+        return card;
+      });
+      list.cards = newCards;
+      return { ...state, [listId]: list };
+    }
 
     default:
       return state;
