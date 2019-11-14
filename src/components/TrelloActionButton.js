@@ -27,7 +27,8 @@ class TrelloActionButton extends React.Component {
           ...styles.openFormButtonGroup,
           opacity: buttonTextOpacity,
           color: buttonTextColor,
-          background: buttonTextBackground
+          background: buttonTextBackground,
+          minWidth: 228
         }}
       >
         <Icon>add</Icon>
@@ -77,7 +78,7 @@ class TrelloActionButton extends React.Component {
           style={{
             overflow: "visible",
             minHeight: 80,
-            /* minWidth: 228, */
+            minWidth: 228,
             padding: "6px 8px 2px"
           }}
         >

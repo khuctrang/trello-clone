@@ -46,8 +46,8 @@ class App extends Component {
                     index={index}
                   />
                 ))}
-                <TrelloActionButton list />
                 {provider.placeholder}
+                <TrelloActionButton list />
               </Container>
             )}
           </Droppable>
