@@ -1,39 +1,58 @@
 import React, { Component } from "react";
 import TrelloList from "./TrelloList";
-import { connect } from "react-redux";
 import TrelloActionButton from "./TrelloActionButton";
+import { DragDropContext } from "react-beautiful-dnd";
+
+import { connect } from "react-redux";
+import { sort } from "../actions";
+
+import { Container } from "./AppStyle";
 
 class App extends Component {
+  onDragEnd = result => {
+    // TODO: reordering logic
+    const { destination, source, draggableId } = result;
+
+    if (!destination) return; // Drag out of outer components
+
+    this.props.dispatch(
+      sort(
+        source.droppableId,
+        destination.droppableId,
+        source.index,
+        destination.index,
+        draggableId
+      )
+    );
+  };
+
   render() {
     const { lists } = this.props;
     return (
-      <div className="App">
-        <h2>Hello Hanoi</h2>
-        {/* <TrelloList title={"test"} /> */}
-        <div style={styles.listsContainer}>
-          {lists.map(list => (
-            <TrelloList
-              listId={list.id}
-              key={list.id}
-              title={list.title}
-              cards={list.cards}
-            />
-          ))}
-          <TrelloActionButton list />
+      <DragDropContext onDragEnd={this.onDragEnd}>
+        <div>
+          <h2>Hello Hanoi</h2>
+          {/* <TrelloList title={"test"} /> */}
+          <Container>
+            {lists.map(list => (
+              <TrelloList
+                listId={list.id}
+                key={list.id}
+                title={list.title}
+                cards={list.cards}
+              />
+            ))}
+            <TrelloActionButton list />
+          </Container>
         </div>
-      </div>
+      </DragDropContext>
     );
   }
 }
-const styles = {
-  listsContainer: {
-    display: "flex",
-    flexDirection: "row"
-  }
-};
+
 const mapStateToProps = state => {
   console.log(state);
-  return { lists: state.lists };
+  return { lists: Object.values(state.lists) };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps /* , { sort } */)(App);
