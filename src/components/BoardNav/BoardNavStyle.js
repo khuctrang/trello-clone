@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Icon } from "@material-ui/core";
 
 export const BoardNavWrapper = styled.div`
   border: 0px;
@@ -14,6 +15,7 @@ export const BoardNavWrapper = styled.div`
   left: 0;
   top: 0; */
   margin-bottom: 20px;
+  font-size: 0.9rem;
 `;
 
 export const BoardNavMain = styled.div`
@@ -48,10 +50,23 @@ export const BoardStar = styled(NavButton)`
 export const BoardTitle = styled(NavButton)`
   font-size: 1.2rem;
   font-weight: 700;
-  padding: 0.8rem;
+  padding: 0.3rem;
 `;
 
 export const Divider = styled.span`
-  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  width: 2px;
+  background-color: rgba(255, 255, 255, 0.2);
   height: 1.6rem;
+  margin: 0 10px;
+`;
+
+export const BoardPriv = styled(NavButton)`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 110px;
+`;
+
+export const BoardIcon = styled(Icon)`
+  font-size: 1.3rem !important;
 `;

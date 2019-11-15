@@ -5,7 +5,8 @@ const initialState = {
     id: "board-0",
     lists: ["list-0", "list-1"],
     title: "Default Board",
-    fav: false
+    fav: false,
+    privacy: false
   }
 };
 
@@ -78,6 +79,13 @@ const boardsReducer = (state = initialState, { type, payload }) => {
       const board = state[boardId];
       const fav = !board.fav;
       return { ...state, [boardId]: { ...board, fav: fav } };
+    }
+
+    case actionTypes.TOGGLE_BOARD_PRIVACY: {
+      const boardId = "board-0";
+      const board = state[boardId];
+      const priv = !board.privacy;
+      return { ...state, [boardId]: { ...board, privacy: priv } };
     }
 
     default:
