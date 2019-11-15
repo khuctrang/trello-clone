@@ -3,14 +3,14 @@ import _ from "lodash";
 
 const initialState = {
   "list-0": {
-    title: "Last Episode",
+    title: "Stuff to Try (this is a list)",
     id: "list-0",
-    cards: ["card-0", "card-1"]
+    cards: ["card-0", "card-1", "card-2", "card-3", "card-5"]
   },
   "list-1": {
-    title: "Another Episode",
+    title: "Tried It (another list)",
     id: "list-1",
-    cards: ["card-2", "card-3", "card-4"]
+    cards: ["card-7"]
   }
 };
 

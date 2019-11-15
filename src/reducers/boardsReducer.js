@@ -4,7 +4,7 @@ const initialState = {
   "board-0": {
     id: "board-0",
     lists: ["list-0", "list-1"],
-    title: "Default Board",
+    title: "How to use Trello",
     fav: false,
     privacy: false,
     background: {

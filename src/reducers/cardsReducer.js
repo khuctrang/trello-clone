@@ -3,30 +3,35 @@ import _ from "lodash";
 
 const initialState = {
   "card-0": {
-    text: "A demo card",
+    text: "Scroll to see other lists on this board.",
     id: `card-0`,
     list: "list-0"
   },
   "card-1": {
-    text:
-      "1. Written undertaking by one party (the writer or maker) to pay a specified sum of money to a named party (the payee) or to the bearer (holder) of the note, on demand or on a stated date. In contrast to a draft (which is a three-party order to pay) a note is a two-party promise to pay. See also promissory note. 2.",
+    text: "Click and drag a card or list to move it around. Try now!",
     id: `card-1`,
     list: "list-0"
   },
   "card-2": {
     text:
-      "This is a demo card which is wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwaaaaaaaaaaayyyyyyyyyyyyyyyyyyyyyyy longer",
+      "Double click on this card or click on the pen icon to edit its content.",
     id: `card-2`,
-    list: "list-1"
+    list: "list-0"
   },
   "card-3": {
-    text: "Hmm",
+    text:
+      "Make mistakes? You can delete any cards in a instance. Be careful tho!",
     id: `card-3`,
-    list: "list-1"
+    list: "list-0"
   },
-  "card-4": {
-    text: "This is hard",
-    id: `card-4`,
+  "card-5": {
+    text: "This is my email btw khuctrang1812@gmail.com",
+    id: `card-5`,
+    list: "list-0"
+  },
+  "card-7": {
+    text: "Try Background Settings on the top right of the page.",
+    id: `card-7`,
     list: "list-1"
   }
 };
