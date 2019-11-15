@@ -1,5 +1,6 @@
 export * from "./listsActions";
 export * from "./cardsActions";
+export * from "./boardsAction";
 
 export const actionTypes = {
   ADD_CARD: "ADD_CARD",
@@ -8,5 +9,7 @@ export const actionTypes = {
   ADD_LIST: "ADD_LIST",
   EDIT_LIST_TITLE: "EDIT_LIST_TITLE",
   DELETE_LIST: "DELETE_LIST",
-  DRAG_HAPPENED: "DRAG_HAPPENED"
+  DRAG_HAPPENED: "DRAG_HAPPENED",
+  EDIT_BOARD_TITLE: "EDIT_BOARD_TITLE",
+  TOGGLE_BOARD_FAV: "TOGGLE_BOARD_FAV"
 };

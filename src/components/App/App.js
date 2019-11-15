@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import TrelloList from "../List/TrelloList";
+import BoardNav from "../BoardNav/BoardNav";
 import TrelloActionButton from "../ActionButton/TrelloActionButton";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 import { connect } from "react-redux";
 import { sort } from "../../actions";
 
-import { Container } from "./AppStyle";
+import { Container, Spacer } from "./AppStyle";
 
 class App extends Component {
   onDragEnd = result => {
@@ -32,7 +33,8 @@ class App extends Component {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div>
-          <h2>Hello Hanoi</h2>
+          <BoardNav />
+          {/* <Spacer /> */}
           {/* <TrelloList title={"test"} /> */}
           <Droppable droppableId={"boardId"} direction="horizontal" type="list">
             {provider => (

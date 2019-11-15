@@ -1,19 +1,51 @@
-import React from "react";
-import { BoardNavWrapper, BoardTitle } from "./BoardNavStyle";
+import React, { useState } from "react";
+import {
+  BoardNavWrapper,
+  BoardNavMain,
+  BoardTitle,
+  NavButton,
+  BoardStar,
+  Divider
+} from "./BoardNavStyle";
+import { Icon } from "@material-ui/core";
 
-const BoardNav = ({}) => {
-  const toggleYellow = () => {
+import { connect } from "react-redux";
+import { editBoardTitle, toggleBoardFav } from "../../actions";
+
+const BoardNav = ({ boardTitle, boardFav, toggleBoardFav, editBoardTitle }) => {
+  /* const [liked, setLiked] = useState(false); */
+  /* const toggleYellow = () => {
     this.setState(prevState => ({
       starColor: prevState.starColor === "#f2d600" ? "white" : "#f2d600"
     }));
-  };
+  }; */
 
   return (
     <BoardNavWrapper>
-      <BoardNav>
-        <BoardTitle>Hello World</BoardTitle>
-      </BoardNav>
+      <BoardNavMain>
+        <BoardTitle>{boardTitle}</BoardTitle>
+        <BoardStar onClick={toggleBoardFav}>
+          {/* start */}
+          <Icon>{boardFav ? "star" : "star_border"}</Icon>
+        </BoardStar>
+        <Divider />
+        <NavButton>{/* team name */}</NavButton>
+        <Divider />
+        <NavButton>{/* private/public */}</NavButton>
+        <Divider />
+        <NavButton>{/* showmenu */}</NavButton>
+      </BoardNavMain>
     </BoardNavWrapper>
   );
 };
-export default BoardNav;
+
+const mapStateToProps = state => {
+  return {
+    boardTitle: state.boards["board-0"].title,
+    boardFav: state.boards["board-0"].fav
+  };
+};
+
+export default connect(mapStateToProps, { editBoardTitle, toggleBoardFav })(
+  BoardNav
+);
