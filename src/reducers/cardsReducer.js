@@ -2,27 +2,28 @@ import { actionTypes } from "../actions";
 
 const initialState = {
   "card-0": {
-    text: "This is a demo card",
+    text: "A demo card",
     id: `card-0`,
     list: "list-0"
   },
   "card-1": {
-    text: "This is a demo card",
+    text: "Another demo card",
     id: `card-1`,
     list: "list-0"
   },
   "card-2": {
-    text: "This is a demo card",
+    text:
+      "This is a demo card which is wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwaaaaaaaaaaayyyyyyyyyyyyyyyyyyyyyyy longer",
     id: `card-2`,
     list: "list-1"
   },
   "card-3": {
-    text: "This is a demo card",
+    text: "Hmm",
     id: `card-3`,
     list: "list-1"
   },
   "card-4": {
-    text: "This is a demo card",
+    text: "This is hard",
     id: `card-4`,
     list: "list-1"
   }

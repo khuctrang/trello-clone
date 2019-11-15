@@ -20,3 +20,18 @@ export const EditButton = styled(Icon)`
     opacity: 0.8;
   }
 `;
+
+export const DeleteButton = styled(Icon)`
+  position: absolute;
+  display: none;
+  right: 5px;
+  bottom: 5px;
+  opacity: 0.5;
+  ${CardContainer}:hover & {
+    display: block;
+    cursor: pointer;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+`;

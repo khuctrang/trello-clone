@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
-import TrelloForm from "./TrelloForm";
+import TrelloForm from "../TrelloForm";
 import { Draggable } from "react-beautiful-dnd";
 
-import { CardContainer, EditButton } from "./TrelloCardStyle";
+import { CardContainer, EditButton, DeleteButton } from "./TrelloCardStyle";
 
-import { editCard } from "../actions";
+import { editCard, deleteCard } from "../../actions";
 import { connect } from "react-redux";
 
-const TrelloCard = ({ text, id, listId, index, editCard }) => {
+const TrelloCard = ({ text, id, listId, index, editCard, deleteCard }) => {
   /* EDIT FUNCTION */
   const [isEditing, setIsEditing] = useState(false);
   const [cardText, setText] = useState(text);
@@ -52,6 +52,14 @@ const TrelloCard = ({ text, id, listId, index, editCard }) => {
               >
                 edit
               </EditButton>
+
+              <DeleteButton
+                fontSize="small"
+                onMouseDown={() => deleteCard(id, listId)}
+              >
+                delete
+              </DeleteButton>
+
               <CardContent>
                 <Typography gutterBottom>{text}</Typography>
               </CardContent>
@@ -65,4 +73,4 @@ const TrelloCard = ({ text, id, listId, index, editCard }) => {
   return isEditing ? renderEditForm() : renderCard();
 };
 
-export default connect(null, { editCard })(TrelloCard);
+export default connect(null, { editCard, deleteCard })(TrelloCard);

@@ -11,12 +11,12 @@ const initialState = {
 const boardsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.ADD_LIST: {
-      const { boardID, id } = payload;
-      const board = state[boardID];
-      const newListID = `list-${id}`;
-      const newLists = [...board.lists, newListID];
+      const { boardId, id } = payload;
+      const board = state[boardId];
+      const newListId = `list-${id}`;
+      const newLists = [...board.lists, newListId];
       board.lists = newLists;
-      return { ...state, [boardID]: board };
+      return { ...state, [boardId]: board };
     }
 
     case actionTypes.DRAG_HAPPENED: {

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import TrelloList from "./TrelloList";
-import TrelloActionButton from "./TrelloActionButton";
+import TrelloList from "../List/TrelloList";
+import TrelloActionButton from "../ActionButton/TrelloActionButton";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 import { connect } from "react-redux";
-import { sort } from "../actions";
+import { sort } from "../../actions";
 
 import { Container } from "./AppStyle";
 
