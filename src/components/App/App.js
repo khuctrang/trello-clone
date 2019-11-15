@@ -7,7 +7,7 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 import { sort } from "../../actions";
 
-import { Container, Spacer } from "./AppStyle";
+import { Container, Spacer, AppWrapper } from "./AppStyle";
 
 class App extends Component {
   onDragEnd = result => {
@@ -29,10 +29,17 @@ class App extends Component {
   };
 
   render() {
-    const { lists } = this.props;
+    const { lists, background } = this.props;
+    console.log(background);
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <div>
+        <AppWrapper
+          style={
+            background.type == "color"
+              ? { backgroundColor: `${background.background}` }
+              : { backgroundImage: `url(${background.background})` }
+          }
+        >
           <BoardNav />
           {/* <Spacer /> */}
           {/* <TrelloList title={"test"} /> */}
@@ -53,7 +60,7 @@ class App extends Component {
               </Container>
             )}
           </Droppable>
-        </div>
+        </AppWrapper>
       </DragDropContext>
     );
   }
@@ -61,7 +68,11 @@ class App extends Component {
 
 const mapStateToProps = state => {
   console.log(state);
-  return { lists: Object.values(state.lists) };
+  const board = "board-0";
+  return {
+    lists: Object.values(state.lists),
+    background: state.boards[board].background
+  };
 };
 
 export default connect(mapStateToProps /* , { sort } */)(App);

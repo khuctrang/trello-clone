@@ -21,3 +21,6 @@ export const toggleBoardPrivacy = () => {
   console.log("xx");
   return action(actionTypes.TOGGLE_BOARD_PRIVACY);
 };
+
+export const editBackground = (type, background) =>
+  action(actionTypes.EDIT_BACKGROUND, { type, background });

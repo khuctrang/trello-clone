@@ -6,7 +6,11 @@ const initialState = {
     lists: ["list-0", "list-1"],
     title: "Default Board",
     fav: false,
-    privacy: false
+    privacy: false,
+    background: {
+      type: "image",
+      background: "/static/media/scene3.4be96530.jpg"
+    }
   }
 };
 
@@ -86,6 +90,17 @@ const boardsReducer = (state = initialState, { type, payload }) => {
       const board = state[boardId];
       const priv = !board.privacy;
       return { ...state, [boardId]: { ...board, privacy: priv } };
+    }
+
+    case actionTypes.EDIT_BACKGROUND: {
+      const { type, background } = payload;
+      const boardId = "board-0";
+      const board = state[boardId];
+      /* const background = board.background; */
+      return {
+        ...state,
+        [boardId]: { ...board, background: { type, background } }
+      };
     }
 
     default:

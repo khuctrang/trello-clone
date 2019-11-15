@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import ListItemText from "@material-ui/core/ListItemText";
+
+import { connect } from "react-redux";
+import { editBackground } from "../../actions";
 
 import {
   ColorSelection,
@@ -45,46 +48,44 @@ let backgrounds = {
   ]
 };
 
-class BackgroundSelection extends Component {
-  state = { openColor: true };
+const BackgroundSelection = ({ editBackground }) => {
+  const [openColor, setOpenColor] = useState(true);
 
-  setBackground = newBackground => {
-    this.props.handleBackgroundChange(newBackground);
+  const toggleSelectionGroup = btn => {
+    btn === "color" ? setOpenColor(true) : setOpenColor(false);
   };
 
-  toggleSelectionGroup = btn => {
-    btn == "color"
-      ? this.setState({ openColor: true })
-      : this.setState({ openColor: false });
-  };
+  return (
+    <div style={{ padding: 20, textAlign: "center" }}>
+      <ButtonGroup>
+        <Button onClick={() => toggleSelectionGroup("color")}>Color</Button>
+        <Button onClick={() => toggleSelectionGroup("image")}>Image</Button>
+      </ButtonGroup>
+      {openColor
+        ? backgrounds.Colors.map(color => (
+            <ColorSelection
+              button
+              key={color}
+              bg={color}
+              onClick={() => editBackground("color", color)}
+            >
+              <ListItemText>{color}</ListItemText>
+            </ColorSelection>
+          ))
+        : backgrounds.Images.map(image => {
+            console.log(image);
+            return (
+              <ImageSelection
+                button
+                key={image}
+                bg={image}
+                onClick={() => editBackground("image", image)}
+              ></ImageSelection>
+            );
+          })}
+      <Divider style={{ margin: 30 }} />
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div style={{ padding: 20, textAlign: "center" }}>
-        <ButtonGroup>
-          <Button onClick={() => this.toggleSelectionGroup("color")}>
-            Color
-          </Button>
-          <Button onClick={() => this.toggleSelectionGroup("image")}>
-            Image
-          </Button>
-        </ButtonGroup>
-        {this.state.openColor
-          ? backgrounds.Colors.map(color => (
-              <ColorSelection button key={color} bg={color}>
-                <ListItemText>{color}</ListItemText>
-              </ColorSelection>
-            ))
-          : backgrounds.Images.map(image => {
-              console.log(image);
-              return (
-                <ImageSelection button key={image} bg={image}></ImageSelection>
-              );
-            })}
-        <Divider style={{ margin: 30 }} />
-      </div>
-    );
-  }
-}
-
-export default BackgroundSelection;
+export default connect(null, { editBackground })(BackgroundSelection);
