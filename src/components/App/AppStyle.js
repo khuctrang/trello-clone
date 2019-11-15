@@ -17,6 +17,6 @@ export const AppWrapper = styled.div`
   background-attachment: fixed;
   background-size: cover;
   height: 100vh;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   overflow-x: scroll;
 `;

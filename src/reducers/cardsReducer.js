@@ -47,7 +47,7 @@ const cardsReducer = (state = initialState, { type, payload }) => {
       const { id, newText } = payload;
       const card = state[id];
       card.text = newText;
-      return { ...state, [`card-${id}`]: card };
+      return { ...state, [id]: card };
     }
 
     case actionTypes.DELETE_CARD: {

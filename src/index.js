@@ -12,7 +12,7 @@ const { persistor, store } = Store();
 
 const GlobalStyle = createGlobalStyle`
   html {
-    background-color:#eeebcd;
+    background-color:#333;
     font-family: "Open Sans", sans-serif;
     
   }
