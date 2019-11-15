@@ -10,13 +10,21 @@ export const ListContainer = styled.div`
   margin: 0 8px 0 0;
 `;
 
+export const FormEdit = styled.form`
+  width: 100%;
+`;
+
 export const StyledInput = styled.input`
   width: 100%;
+  min-height: 40px;
   border: none;
   outline-color: blue;
   border-radius: 3px;
-  margin-bottom: 3px;
-  padding: 5px;
+  /* margin-bottom: 3px;
+  padding: 5px; */
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
 `;
 
 export const TitleContainer = styled.div`

@@ -5,14 +5,14 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
 
 import { editListTitle, deleteList } from "../../actions";
-import { Icon } from "@material-ui/core/Icon";
 
 import {
   ListContainer,
   TitleContainer,
   DeleteButton,
   ListTitle,
-  StyledInput
+  StyledInput,
+  FormEdit
 } from "./TrelloListStyle";
 
 const TrelloList = ({
@@ -33,7 +33,7 @@ const TrelloList = ({
 
   const renderEditInput = () => {
     return (
-      <form onSubmit={handleFinishEditing}>
+      <FormEdit onSubmit={handleFinishEditing}>
         <StyledInput
           type="text"
           value={listTitle}
@@ -42,7 +42,7 @@ const TrelloList = ({
           onFocus={handleFocus}
           onBlur={handleFinishEditing}
         />
-      </form>
+      </FormEdit>
     );
   };
 
@@ -103,7 +103,7 @@ const TrelloList = ({
                 {isEditing ? (
                   renderEditInput()
                 ) : (
-                  <TitleContainer onDoubleClick={() => setIsEditing(true)}>
+                  <TitleContainer onClick={() => setIsEditing(true)}>
                     <ListTitle>{listTitle}</ListTitle>
                     <DeleteButton onClick={handleDeleteList}>
                       delete
