@@ -1,7 +1,5 @@
-import { actionTypes } from ".";
+import { actionTypes, action } from ".";
 import uuid from "uuidv4";
-
-const action = (type, payload) => ({ type, payload });
 
 export const addList = title => (dispatch, getState) => {
   /* const boardId = getState().activeBoard; */

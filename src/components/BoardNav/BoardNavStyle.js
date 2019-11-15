@@ -11,11 +11,12 @@ export const BoardNavWrapper = styled.div`
     background-color: rgba(0, 0, 0, 0.35);
   }
   padding: 0.5rem;
-  /* position: absolute;
-  left: 0;
-  top: 0; */
   margin-bottom: 20px;
   font-size: 0.9rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const BoardNavMain = styled.div`

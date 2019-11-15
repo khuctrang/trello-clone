@@ -16,6 +16,7 @@ import {
   toggleBoardFav,
   toggleBoardPrivacy
 } from "../../actions";
+import BoardMenu from "../BoardMenu/BoardMenu";
 
 const BoardNav = ({
   boardTitle,
@@ -59,6 +60,7 @@ const BoardNav = ({
         <Divider />
         <NavButton>{/* showmenu */}</NavButton>
       </BoardNavMain>
+      <BoardMenu />
     </BoardNavWrapper>
   );
 };

@@ -49,7 +49,7 @@ const TrelloList = ({
   const handleFocus = e => {
     console.log("hi");
 
-    e.target.select();
+    /* e.target.select(); */
   };
 
   const handleChange = e => {
@@ -64,7 +64,6 @@ const TrelloList = ({
 
   const handleDeleteList = () => {
     deleteList(listId);
-    console.log("deleteeeeeee");
   };
 
   return (
@@ -75,28 +74,6 @@ const TrelloList = ({
           ref={provider.innerRef}
           {...provider.dragHandleProps}
         >
-          {/* <Droppable droppableId={String(listId)} type="card">
-            {provider => (
-              <div {...provider.droppableProps} ref={provider.innerRef}>
-                <h4>{title}</h4>
-                {cards.map((cardId, index) => {
-                  const card = cardList[cardId];
-                  return (
-                    <TrelloCard
-                      key={card.id}
-                      text={card.text}
-                      id={card.id}
-                      index={index}
-                      listId={listId}
-                    />
-                  );
-                })}
-
-                {provider.placeholder}
-                <TrelloActionButton listId={listId} />
-              </div>
-            )}
-          </Droppable> */}
           <Droppable droppableId={String(listId)} type="card">
             {provider => (
               <div {...provider.droppableProps} ref={provider.innerRef}>

@@ -2,6 +2,8 @@ export * from "./listsActions";
 export * from "./cardsActions";
 export * from "./boardsAction";
 
+export const action = (type, payload) => ({ type, payload });
+
 export const actionTypes = {
   ADD_CARD: "ADD_CARD",
   EDIT_CARD: "EDIT_CARD",
