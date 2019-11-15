@@ -4,38 +4,14 @@ const initialState = {
   "list-0": {
     title: "Last Episode",
     id: "list-0",
-    cards: [
-      {
-        id: 0,
-        text: "xxxxxxxxxxxxxxxxxxx"
-      },
-      {
-        id: 1,
-        text: "yyyyyyyyyyy"
-      }
-    ]
+    cards: ["card-0", "card-1"]
   },
   "list-1": {
     title: "Another Episode",
     id: "list-1",
-    cards: [
-      {
-        id: 2,
-        text: "another xxxxxxxxxxxxxxxxxxx"
-      },
-      {
-        id: 3,
-        text: "another yyyyyyyyyyy"
-      },
-      {
-        id: 4,
-        text: "another yyyyyyyyyyy"
-      }
-    ]
+    cards: ["card-2", "card-3", "card-4"]
   }
 };
-let listId = 1;
-let cardId = 5;
 
 const listsReducer = (state = initialState, { type, payload }) => {
   console.log("type");
@@ -44,35 +20,20 @@ const listsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     /* ADD_LIST */
     case actionTypes.ADD_LIST:
-      /* console.log("state");
-      console.log(state); */
-
-      ++listId;
-      const newList = title => {
-        return { title, cards: [], id: `list-${listId}` };
-      };
-      return { ...state, [`list-${listId}`]: newList(payload) };
+      const { title, id } = payload;
+      const newList = { title, id: `list-${id}`, cards: [] };
+      return { ...state, [`list-${id}`]: newList };
 
     /* ADD_CARD */
     case actionTypes.ADD_CARD: {
-      /*       console.log("state");
-      console.log(state); */
-      const { text, listId } = payload;
-      const newCard = {
-        id: cardId,
-        text: text
-      };
-      ++cardId;
+      const { id, listId } = payload;
       const list = state[listId];
-      list.cards.push(newCard);
-
+      list.cards.push(`card-${id}`);
       return { ...state, [listId]: list };
     }
 
     /* DRAG_HAPPENED */
     case actionTypes.DRAG_HAPPENED:
-      /* console.log("state");
-      console.log(state); */
       const {
         droppableIdStart,
         droppableIdEnd,
@@ -115,25 +76,31 @@ const listsReducer = (state = initialState, { type, payload }) => {
       }
       return state;
 
-    /* EDIT_CARD */
-    case actionTypes.EDIT_CARD: {
-      const { id, listId, newText } = payload;
-      console.log("id");
-      console.log(id);
-      console.log("listId");
-      console.log(listId);
-      console.log("newText");
-      console.log(newText);
-      const list = state[listId];
-      const newCards = list.cards.map(card => {
-        if (card.id === id) {
-          card.text = newText;
-          return card;
-        }
-        return card;
-      });
-      list.cards = newCards;
-      return { ...state, [listId]: list };
+    /* DELETE_CARD */
+    case actionTypes.DELETE_CARD: {
+      const { listID, id } = payload;
+
+      const list = state[listID];
+      const newCards = list.cards.filter(cardID => cardID !== id);
+
+      return { ...state, [listID]: { ...list, cards: newCards } };
+    }
+
+    /* DELETE_LIST_TITLE */
+    case actionTypes.EDIT_LIST_TITLE: {
+      const { listID, newTitle } = payload;
+
+      const list = state[listID];
+      list.title = newTitle;
+      return { ...state, [listID]: list };
+    }
+
+    /* DELETE_LIST */
+    case actionTypes.DELETE_LIST: {
+      const { listID } = payload;
+      const newState = state;
+      delete newState[listID];
+      return newState;
     }
 
     default:
