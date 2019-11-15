@@ -29,8 +29,8 @@ class App extends Component {
   };
 
   render() {
-    const { lists, background } = this.props;
-    console.log(background);
+    const { board, lists, background } = this.props;
+    console.log(board);
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
         <AppWrapper
@@ -46,7 +46,7 @@ class App extends Component {
           <Droppable droppableId={"boardId"} direction="horizontal" type="list">
             {provider => (
               <Container {...provider.droppableProps} ref={provider.innerRef}>
-                {lists.map((list, index) => (
+                {/* lists.map((list, index) => (
                   <TrelloList
                     listId={list.id}
                     key={list.id}
@@ -54,6 +54,9 @@ class App extends Component {
                     cards={list.cards}
                     index={index}
                   />
+                )) */}
+                {board.lists.map((listId, index) => (
+                  <TrelloList listId={listId} key={listId} index={index} />
                 ))}
                 {provider.placeholder}
                 <TrelloActionButton list />
@@ -71,6 +74,7 @@ const mapStateToProps = state => {
   const board = "board-0";
   return {
     lists: Object.values(state.lists),
+    board: state.boards["board-0"],
     background: state.boards[board].background
   };
 };

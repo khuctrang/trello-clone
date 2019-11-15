@@ -110,8 +110,10 @@ const TrelloList = ({
   );
 };
 
-const mapStateToProps = state => {
-  return { cardList: state.cards };
+const mapStateToProps = (state, ownProps) => {
+  const { listId } = ownProps;
+  const list = state.lists[listId];
+  return { cardList: state.cards, cards: list.cards, title: list.title };
 };
 
 export default connect(mapStateToProps, { deleteList, editListTitle })(

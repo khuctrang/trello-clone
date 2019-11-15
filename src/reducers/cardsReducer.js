@@ -8,7 +8,8 @@ const initialState = {
     list: "list-0"
   },
   "card-1": {
-    text: "Another demo card",
+    text:
+      "1. Written undertaking by one party (the writer or maker) to pay a specified sum of money to a named party (the payee) or to the bearer (holder) of the note, on demand or on a stated date. In contrast to a draft (which is a three-party order to pay) a note is a two-party promise to pay. See also promissory note. 2.",
     id: `card-1`,
     list: "list-0"
   },
