@@ -3,6 +3,7 @@ import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import CardContent from "@material-ui/core/CardContent";
 import TrelloForm from "../TrelloForm";
+import TrelloButton from "../TrelloButton";
 import { Draggable } from "react-beautiful-dnd";
 
 import { CardContainer, EditButton, DeleteButton } from "./TrelloCardStyle";
@@ -15,6 +16,12 @@ const TrelloCard = ({ text, id, listId, index, editCard, deleteCard }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [cardText, setText] = useState(text);
 
+  const handleChange = e => {
+    console.log("setText");
+    console.log(setText);
+    setText(e.target.value);
+  };
+
   const closeForm = e => {
     setIsEditing(false);
   };
@@ -26,14 +33,13 @@ const TrelloCard = ({ text, id, listId, index, editCard, deleteCard }) => {
     setIsEditing(false);
   };
 
-  const renderEditForm = () => (
-    <TrelloForm
-      text={cardText}
-      setText={setText}
-      closeForm={closeForm}
-      actionButtonClicked={saveCard}
-    />
-  );
+  const renderEditForm = () => {
+    return (
+      <TrelloForm text={cardText} onChange={handleChange} closeForm={closeForm}>
+        <TrelloButton onClick={saveCard}>Save</TrelloButton>
+      </TrelloForm>
+    );
+  };
 
   const renderCard = () => {
     return (

@@ -12,7 +12,7 @@ export const addBoard = title => {
   };
 };
 
-export const editBoardTitle = (title, boardId) =>
+export const editBoardTitle = (boardId, title) =>
   action(actionTypes.EDIT_BOARD_TITLE, { title, boardId });
 
 export const toggleBoardFav = () => action(actionTypes.TOGGLE_BOARD_FAV);

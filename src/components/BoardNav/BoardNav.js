@@ -7,8 +7,11 @@ import {
   BoardStar,
   Divider,
   BoardPriv,
-  BoardIcon
+  BoardIcon,
+  StyledInput
 } from "./BoardNavStyle";
+
+import { FormEdit } from "../List/TrelloListStyle";
 
 import { connect } from "react-redux";
 import {
@@ -19,24 +22,58 @@ import {
 import BoardMenu from "../BoardMenu/BoardMenu";
 
 const BoardNav = ({
-  boardTitle,
+  _boardTitle,
   boardFav,
   boardPriv,
   toggleBoardFav,
   editBoardTitle,
   toggleBoardPrivacy
 }) => {
-  /* const [liked, setLiked] = useState(false); */
-  /* const toggleYellow = () => {
-    this.setState(prevState => ({
-      starColor: prevState.starColor === "#f2d600" ? "white" : "#f2d600"
-    }));
-  }; */
+  const [isEditing, setIsEditing] = useState(false);
+  const [boardTitle, setBoardTitle] = useState(_boardTitle);
+
+  const renderEditInput = () => {
+    return (
+      <FormEdit onSubmit={handleFinishEditing}>
+        <StyledInput
+          type="text"
+          value={boardTitle}
+          onChange={handleChange}
+          autoFocus
+          onFocus={handleFocus}
+          onBlur={handleFinishEditing}
+        />
+      </FormEdit>
+    );
+  };
+
+  const handleFocus = e => {
+    console.log("hi");
+
+    /* e.target.select(); */
+  };
+
+  const handleChange = e => {
+    e.preventDefault();
+    setBoardTitle(e.target.value);
+  };
+
+  const handleFinishEditing = e => {
+    setIsEditing(false);
+    editBoardTitle("board-0", boardTitle);
+  };
 
   return (
     <BoardNavWrapper>
       <BoardNavMain>
-        <BoardTitle>{boardTitle}</BoardTitle>
+        {isEditing ? (
+          renderEditInput()
+        ) : (
+          <BoardTitle onClick={() => setIsEditing(true)}>
+            {boardTitle}
+          </BoardTitle>
+        )}
+
         <BoardStar onClick={toggleBoardFav}>
           {/* start */}
           <BoardIcon>{boardFav ? "star" : "star_border"}</BoardIcon>
@@ -58,7 +95,6 @@ const BoardNav = ({
         )}
 
         <Divider />
-        <NavButton>{/* showmenu */}</NavButton>
       </BoardNavMain>
       <BoardMenu />
     </BoardNavWrapper>
@@ -67,7 +103,7 @@ const BoardNav = ({
 
 const mapStateToProps = state => {
   return {
-    boardTitle: state.boards["board-0"].title,
+    _boardTitle: state.boards["board-0"].title,
     boardFav: state.boards["board-0"].fav,
     boardPriv: state.boards["board-0"].privacy
   };

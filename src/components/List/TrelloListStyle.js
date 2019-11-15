@@ -7,7 +7,7 @@ export const ListContainer = styled.div`
   width: 300px;
   padding: 8px;
   height: 100%;
-  margin: 0 8px 0 0;
+  margin: 0 10px 0 0;
 `;
 
 export const FormEdit = styled.form`
@@ -33,6 +33,7 @@ export const TitleContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  padding-left: 10px;
 `;
 
 export const DeleteButton = styled(Icon)`

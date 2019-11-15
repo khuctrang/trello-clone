@@ -12,7 +12,7 @@ export const BoardNavWrapper = styled.div`
   }
   padding: 0.5rem;
   margin-bottom: 20px;
-  font-size: 0.9rem;
+  font-size: 1rem;
 
   display: flex;
   justify-content: space-between;
@@ -20,7 +20,7 @@ export const BoardNavWrapper = styled.div`
 `;
 
 export const BoardNavMain = styled.div`
-  min-height: 30px;
+  min-height: 43px;
   /* width: 50%; */
   /* background: rgba(0, 0, 0, 0.15); */
   display: flex;
@@ -34,9 +34,9 @@ export const NavButton = styled.button`
   border: 0px;
   outline: none;
   border-radius: 0.3rem;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0.4);
   color: white;
-  padding: 0.4rem;
+  padding: 0.4rem 1rem;
   &:hover {
     background-color: rgba(0, 0, 0, 0.35);
   }
@@ -49,9 +49,9 @@ export const BoardStar = styled(NavButton)`
 `;
 
 export const BoardTitle = styled(NavButton)`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  padding: 0.3rem;
+  background-color: transparent;
 `;
 
 export const Divider = styled.span`
@@ -70,4 +70,15 @@ export const BoardPriv = styled(NavButton)`
 
 export const BoardIcon = styled(Icon)`
   font-size: 1.3rem !important;
+`;
+
+export const StyledInput = styled.input`
+  border: none;
+  outline-color: blue;
+  box-sizing: border-box;
+  font-size: 1.3rem;
+  border-radius: 0.3rem;
+  padding: 0.4rem 1rem;
+  margin-left: 10px;
+  width: auto;
 `;

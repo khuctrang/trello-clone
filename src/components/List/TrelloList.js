@@ -76,7 +76,11 @@ const TrelloList = ({
         >
           <Droppable droppableId={String(listId)} type="card">
             {provider => (
-              <div {...provider.droppableProps} ref={provider.innerRef}>
+              <div
+                {...provider.droppableProps}
+                ref={provider.innerRef}
+                style={{ width: 285 }}
+              >
                 {isEditing ? (
                   renderEditInput()
                 ) : (
