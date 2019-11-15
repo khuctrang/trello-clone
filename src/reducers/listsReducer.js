@@ -1,4 +1,5 @@
 import { actionTypes } from "../actions";
+import _ from "lodash";
 
 const initialState = {
   "list-0": {
@@ -97,9 +98,9 @@ const listsReducer = (state = initialState, { type, payload }) => {
 
     /* DELETE_LIST */
     case actionTypes.DELETE_LIST: {
+      console.log("ahihihih");
       const { listId } = payload;
-      const newState = state;
-      delete newState[listId];
+      const newState = _.omit(state, [listId]);
       return newState;
     }
 

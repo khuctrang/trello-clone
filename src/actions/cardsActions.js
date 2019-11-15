@@ -1,9 +1,11 @@
 import { actionTypes } from ".";
+import uuid from "uuidv4";
 
 const action = (type, payload) => ({ type, payload });
 
 export const addCard = (listId, text) => {
-  return action(actionTypes.ADD_CARD, { listId, text });
+  const id = uuid();
+  return action(actionTypes.ADD_CARD, { listId, text, id });
 };
 
 export const editCard = (id, listId, newText) =>

@@ -38,7 +38,7 @@ export const sort = (
 export const editListTitle = (listId, newTitle) =>
   action(actionTypes.EDIT_LIST_TITLE, { listId, newTitle });
 
-export const deleteList = listId => (dispatch, getState) => {
+export const deleteList = listId => {
   /* const boardId = getState().activeBoard; */
   const boardId = "board-0";
   return action(actionTypes.DELETE_LIST, { listId, boardId });

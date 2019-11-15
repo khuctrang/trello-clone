@@ -12,7 +12,8 @@ const { persistor, store } = Store();
 
 const GlobalStyle = createGlobalStyle`
   html {
-    background-color: orange;
+    background-color:#eeebcd;
+    font-family: "Open Sans", sans-serif;
   }
 `;
 

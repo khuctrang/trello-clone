@@ -41,12 +41,12 @@ const boardsReducer = (state = initialState, { type, payload }) => {
       return state;
     }
     case actionTypes.DELETE_LIST: {
-      const { listID, boardID } = payload;
-      const board = state[boardID];
+      const { listId, boardId } = payload;
+      const board = state[boardId];
       const lists = board.lists;
-      const newLists = lists.filter(id => id !== listID);
+      const newLists = lists.filter(id => id !== listId);
       board.lists = newLists;
-      return { ...state, [boardID]: board };
+      return { ...state, [boardId]: board };
     }
 
     case actionTypes.ADD_BOARD: {

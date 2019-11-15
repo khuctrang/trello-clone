@@ -1,4 +1,5 @@
 import { actionTypes } from "../actions";
+import _ from "lodash";
 
 const initialState = {
   "card-0": {
@@ -50,9 +51,10 @@ const cardsReducer = (state = initialState, { type, payload }) => {
     }
 
     case actionTypes.DELETE_CARD: {
+      console.log("delete card reducer called");
       const { id } = payload;
-      const newState = state;
-      delete newState[id];
+      const newState = _.omit(state, [id]);
+
       return newState;
     }
     default:
