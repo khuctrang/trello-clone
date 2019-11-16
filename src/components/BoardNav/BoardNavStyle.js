@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Icon } from "@material-ui/core";
+import { mobile } from "../../styles/mediaQueris";
 
 export const BoardNavWrapper = styled.div`
   width: 100ww;
@@ -16,6 +17,8 @@ export const BoardNavWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  flex-wrap: wrap;
 `;
 
 export const BoardNavMain = styled.div`
@@ -23,6 +26,8 @@ export const BoardNavMain = styled.div`
   display: flex;
   align-items: center;
   z-index: 3;
+
+  flex-wrap: wrap;
 `;
 
 export const NavButton = styled.button`

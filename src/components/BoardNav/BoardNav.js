@@ -95,8 +95,8 @@ const BoardNav = ({
         )}
 
         <Divider />
+        <BoardMenu />
       </BoardNavMain>
-      <BoardMenu />
     </BoardNavWrapper>
   );
 };
