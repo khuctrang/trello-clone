@@ -2,18 +2,17 @@ import styled from "styled-components";
 import { Icon } from "@material-ui/core";
 
 export const BoardNavWrapper = styled.div`
+  width: 100ww;
   border: 0px;
   border-radius: 0.3rem;
-  /* background-color: rgba(255, 255, 255, 0); */
   background: rgba(0, 0, 0, 0.15);
   color: white;
   &:hover {
     background-color: rgba(0, 0, 0, 0.35);
   }
   padding: 0.5rem;
-  margin-bottom: 20px;
   font-size: 1rem;
-
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,12 +20,8 @@ export const BoardNavWrapper = styled.div`
 
 export const BoardNavMain = styled.div`
   min-height: 43px;
-  /* width: 50%; */
-  /* background: rgba(0, 0, 0, 0.15); */
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
-  /* margin: 20px 0; */
   z-index: 3;
 `;
 

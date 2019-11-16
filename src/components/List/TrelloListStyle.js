@@ -6,7 +6,6 @@ export const ListContainer = styled.div`
   border-radius: 3px;
   width: 300px;
   padding: 8px;
-  height: 100%;
   margin: 0 10px 0 0;
 `;
 

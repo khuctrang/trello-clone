@@ -3,8 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   margin-left: 20px;
   margin-right: 20px;
+  overflow-x: scroll;
+  height: 100%;
 `;
 
 export const Spacer = styled.div`
@@ -16,7 +19,9 @@ export const AppWrapper = styled.div`
   text-align: left;
   background-attachment: fixed;
   background-size: cover;
-  height: 100vh;
+
   /* white-space: nowrap; */
-  overflow-x: scroll;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 `;
