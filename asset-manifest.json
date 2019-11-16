@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.js": "/trello-clone/static/js/main.767892da.chunk.js",
+    "main.js.map": "/trello-clone/static/js/main.767892da.chunk.js.map",
+    "runtime-main.js": "/trello-clone/static/js/runtime-main.aaae5460.js",
+    "runtime-main.js.map": "/trello-clone/static/js/runtime-main.aaae5460.js.map",
+    "static/js/2.bd5e185f.chunk.js": "/trello-clone/static/js/2.bd5e185f.chunk.js",
+    "static/js/2.bd5e185f.chunk.js.map": "/trello-clone/static/js/2.bd5e185f.chunk.js.map",
+    "index.html": "/trello-clone/index.html",
+    "precache-manifest.f0cb9644e1cddc3da6f6cfa4187e2b10.js": "/trello-clone/precache-manifest.f0cb9644e1cddc3da6f6cfa4187e2b10.js",
+    "service-worker.js": "/trello-clone/service-worker.js",
+    "static/media/scene1.jpg": "/trello-clone/static/media/scene1.03811d32.jpg",
+    "static/media/scene2.jpg": "/trello-clone/static/media/scene2.1d01566a.jpg",
+    "static/media/scene3.jpg": "/trello-clone/static/media/scene3.4be96530.jpg",
+    "static/media/scene4.jpg": "/trello-clone/static/media/scene4.c3461ca4.jpg",
+    "static/media/scene5.jpg": "/trello-clone/static/media/scene5.133f90dd.jpg",
+    "static/media/scene6.jpg": "/trello-clone/static/media/scene6.cf2b528c.jpg",
+    "static/media/scene7.jpg": "/trello-clone/static/media/scene7.a33cadf5.jpg",
+    "static/media/scene8.jpg": "/trello-clone/static/media/scene8.c17ddaef.jpg",
+    "static/media/scene9.jpg": "/trello-clone/static/media/scene9.caa6d43a.jpg",
+    "static/media/sunset.jpg": "/trello-clone/static/media/sunset.de0fc6d3.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.aaae5460.js",
+    "static/js/2.bd5e185f.chunk.js",
+    "static/js/main.767892da.chunk.js"
+  ]
+}
